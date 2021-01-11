@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: twitter-filter-consumer-service
+
+kafka:
+  bootstrap-servers: localhost:9092
+  producer:
+    key.serializer: org.apache.kafka.common.serialization.StringSerializer
+    value.serializer: org.apache.kafka.common.serialization.StringSerializer
+
+management:
+  endpoints:
+    web.exposure.include: '*'
+
+#Twitter API
+twitter:
+  kafka:
+  base-uri: https://api.twitter.com/2
+  bearer-token: AAAAAAAAAAAAAAAAAAAAALoNKwEAAAAA05cEsL%2FvLhe6NtW8PnyLTpM2OYY%3DWkchbsHRwYI2eY0fxytAzOCcAYQEFn3Zkwm7FPwGqdHQ5sTisd
+  twitter-search-stream:
+    tweets-search-uri: ${twitter.base-uri}/tweets/search/stream
+    topic: twitter-search-stream
